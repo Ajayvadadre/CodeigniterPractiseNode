@@ -12,6 +12,7 @@ const getUsers = async(req,res)=>{
 }
 const createData = async(req,res)=>{
    try {
+    console.log(req.body)
     const payload = req.body
     const userData = new userModel(payload)
     const saveUser = await userData.save()
@@ -19,6 +20,7 @@ const createData = async(req,res)=>{
     res.status(201).json({saveUser})
 
    } catch (error) {
+    console.log(error);
     res.status(400).send(error)
    }
 }
@@ -45,7 +47,7 @@ const updateData = async (req, res) => {
 const deleteData = async(req,res)=>{
   try {
     let id = req.params.id
-    console.log(id);
+    console.log("Data deleted of " +  id);
     const deleteUser = await userModel.findByIdAndDelete(id)
     res.status(200).json({deleteUser})
   } catch (error) {
@@ -60,6 +62,14 @@ const deleteAll = async(req,res)=>{
     res.status(200).json({deleteUser})
   } catch (error) {
     console.log(error)
+  }
+}
+
+const getExcelData= (req,res)=>{
+  try{
+
+  }catch{
+
   }
 }
 
